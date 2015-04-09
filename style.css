@@ -10,4 +10,24 @@ License URI: https://www.gnu.org/licenses/gpl.html
 Salt Ministries theme is distributed under the terms of the GNU GPL
 */
 
-/* Put styles here */
+body {
+    font-family: "calluna", "Open Sans", Helvetica, sans-serif;
+}
+
+.menu li {
+    display:inline-block;
+}
+
+#content {
+    width:66%;
+    float:left;
+}
+
+#sidebar {
+    width:33%;
+    float:right;
+}
+
+.clear {
+    clear:both;
+}
