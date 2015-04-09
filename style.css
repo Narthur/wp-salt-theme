@@ -38,6 +38,10 @@ body {
     float:right;
 }
 
+#sidebar li {
+    list-style:none;
+}
+
 .clear {
     clear:both;
 }
