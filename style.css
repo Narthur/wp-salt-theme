@@ -20,7 +20,7 @@ a:hover {
 }
 
 #branding {
-    margin:50px 50px 0 50px;
+    margin:50px 50px 20px 50px;
 }
 
 nav {
@@ -38,26 +38,44 @@ nav {
 }
 
 .menu ul {
-    padding-left:0;
+    margin:0;
+    padding:0;
 }
 
 .menu li {
     display:inline-block;
-    margin-right:10px;
+    margin-right:1px;
 }
 
-.menu li+li:before {
-    content: '•';
-    margin-right:10px;
+#header .menu li a {
+    padding:10px;
+    display:block;
+    color:black;
+    text-decoration: none;
+}
+
+#header .menu li a:hover {
+    background-color:darkblue;
+    color:white;
+}
+
+#header .current_page_item, #header .menu .current_page_item a {
+    background-color:darkblue;
+    color:white;
 }
 
 #search {
     float:right;
     margin-right:50px;
+    margin-top:3px;
+}
+
+#search label {
+    display:none;
 }
 
 #container {
-    margin:50px;
+    margin:0 50px;
 }
 
 #content {
@@ -70,6 +88,7 @@ nav {
     width:33%;
     float:right;
     border:2px solid black;
+    margin-top:20px;
 }
 
 #sidebar ul {
