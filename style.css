@@ -14,6 +14,10 @@ body {
     font-family: "calluna", "Open Sans", Helvetica, sans-serif;
 }
 
+.menu {
+    float:left;
+}
+
 .menu ul {
     padding-left:0;
 }
@@ -28,6 +32,10 @@ body {
     margin-right:10px;
 }
 
+#search {
+    float:right;
+}
+
 #content {
     width:66%;
     float:left;
@@ -36,6 +44,11 @@ body {
 #sidebar {
     width:33%;
     float:right;
+    border:2px solid black;
+}
+
+#sidebar ul {
+    padding:0 20px;
 }
 
 #sidebar li {
