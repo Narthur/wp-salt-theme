@@ -14,8 +14,18 @@ body {
     font-family: "calluna", "Open Sans", Helvetica, sans-serif;
 }
 
+.menu ul {
+    padding-left:0;
+}
+
 .menu li {
     display:inline-block;
+    margin-right:10px;
+}
+
+.menu li+li:before {
+    content: '•';
+    margin-right:10px;
 }
 
 #content {
