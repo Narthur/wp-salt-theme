@@ -12,10 +12,29 @@ Salt Ministries theme is distributed under the terms of the GNU GPL
 
 body {
     font-family: "calluna", "Open Sans", Helvetica, sans-serif;
+    font-size:12px;
 }
 
-.menu {
+a:hover {
+    text-decoration:none;
+}
+
+#branding {
+    margin:50px 50px 0 50px;
+}
+
+nav {
+    font-weight: bold;
+}
+
+#menu {
+    overflow:hidden;
+    background-color:lightblue;
+}
+
+#header .menu {
     float:left;
+    margin-left:50px;
 }
 
 .menu ul {
@@ -34,9 +53,15 @@ body {
 
 #search {
     float:right;
+    margin-right:50px;
+}
+
+#container {
+    margin:50px;
 }
 
 #content {
+    clear:left;
     width:66%;
     float:left;
 }
@@ -56,5 +81,18 @@ body {
 }
 
 .clear {
+    clear:both;
+}
+
+#footer {
+    margin:0 50px 50px 50px;
+}
+
+#copyright {
+    float:right;
+}
+
+.contact {
+    display:block;
     clear:both;
 }
