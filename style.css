@@ -11,30 +11,31 @@ Salt Ministries theme is distributed under the terms of the GNU GPL
 */
 
 body {
-    font-family: "calluna", "Open Sans", Helvetica, sans-serif;
+    font-family:"calluna", "Open Sans", Helvetica, sans-serif;
     font-size:12px;
+    margin:0;
+}
+
+h1,h2,h3 {
+    font-family: 'archivo_blackregular';
+    font-weight:normal;
+}
+
+h1 {
+    font-size:30px;
+}
+
+#header h2 {
+    font-size:50px;
+    margin-bottom:0;
+}
+
+h3 {
+    font-size:20px;
 }
 
 a:hover {
     text-decoration:none;
-}
-
-#branding {
-    margin:50px 50px 20px 50px;
-}
-
-nav {
-    font-weight: bold;
-}
-
-#menu {
-    overflow:hidden;
-    background-color:lightblue;
-}
-
-#header .menu {
-    float:left;
-    margin-left:50px;
 }
 
 .menu ul {
@@ -47,21 +48,44 @@ nav {
     margin-right:1px;
 }
 
+#branding {
+    margin:50px 50px 20px 50px;
+}
+
+nav {
+    font-weight: bold;
+}
+
+#menu {
+    overflow:hidden;
+    background: #7db9e8; /* Old browsers */
+    background: -moz-linear-gradient(top, #7db9e8 0%, #207cca 10%, #2989d8 90%, #1e5799 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7db9e8), color-stop(10%,#207cca), color-stop(90%,#2989d8), color-stop(100%,#1e5799)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #7db9e8 0%,#207cca 10%,#2989d8 90%,#1e5799 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #7db9e8 0%,#207cca 10%,#2989d8 90%,#1e5799 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #7db9e8 0%,#207cca 10%,#2989d8 90%,#1e5799 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #7db9e8 0%,#207cca 10%,#2989d8 90%,#1e5799 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7db9e8', endColorstr='#1e5799',GradientType=0 ); /* IE6-9 */
+}
+
+#header .menu {
+    float:left;
+    margin-left:50px;
+}
+
 #header .menu li a {
     padding:10px;
     display:block;
-    color:black;
     text-decoration: none;
+    color:white;
 }
 
 #header .menu li a:hover {
     background-color:darkblue;
-    color:white;
 }
 
 #header .current_page_item, #header .menu .current_page_item a {
     background-color:darkblue;
-    color:white;
 }
 
 #search {
@@ -114,4 +138,16 @@ nav {
 .contact {
     display:block;
     clear:both;
+}
+
+@font-face {
+    font-family: 'archivo_blackregular';
+    src: url('fonts/ArchivoBlack-webfont.eot');
+    src: url('fonts/ArchivoBlack-webfont.eot?#iefix') format('embedded-opentype'),
+    url('fonts/ArchivoBlack-webfont.woff2') format('woff2'),
+    url('fonts/ArchivoBlack-webfont.woff') format('woff'),
+    url('fonts/ArchivoBlack-webfont.ttf') format('truetype'),
+    url('fonts/ArchivoBlack-webfont.svg#archivo_blackregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
