@@ -17,7 +17,7 @@ body {
 }
 
 h1,h2,h3 {
-    font-family: 'archivo_blackregular';
+    font-family: 'archivo_blackregular', sans-serif;
     font-weight:normal;
 }
 
@@ -56,12 +56,13 @@ a:hover {
 }
 
 #branding {
-    margin:50px 50px 20px 50px;
+    margin:5% 5% 20px 5%;
     position:absolute;
     background-color:white;
     padding:20px;
     color:black;
     text-decoration: none;
+    display:block;
 }
 
 #branding:hover h2 {
@@ -95,7 +96,7 @@ nav {
 
 #header .menu {
     float:left;
-    margin-left:50px;
+    margin-left:5%;
 }
 
 #header .menu li a {
@@ -113,31 +114,21 @@ nav {
     background-color:darkblue;
 }
 
-#search {
-    float:right;
-    margin-right:50px;
-    margin-top:3px;
-}
-
-#search label {
-    display:none;
-}
-
 #container {
-    margin:0 50px;
+    margin:0 5%;
 }
 
 #content {
     clear:left;
-    width:65%;
+    width:64.1%;
     float:left;
 }
 
 #sidebar {
-    width:32%;
+    width:30.8%;
     float:right;
     border:2px solid black;
-    margin-top:20px;
+    margin:20px 0;
 }
 
 #sidebar ul {
@@ -153,7 +144,24 @@ nav {
 }
 
 #footer {
-    margin:0 50px 50px 50px;
+    margin:0 5% 5% 5%;
+}
+
+footer li a {
+    color:black;
+}
+
+footer .menu {
+    margin-bottom: 20px;
+}
+
+footer .menu li {
+    margin-right:10px;
+}
+
+footer li+li:before {
+    content:'•';
+    margin-right:10px;
 }
 
 #copyright {
@@ -163,6 +171,19 @@ nav {
 .contact {
     display:block;
     clear:both;
+}
+
+@media all and (max-width: 750px) {
+    #content, #sidebar {
+        width:100%;
+    }
+}
+
+@media all and (max-width: 500px) {
+    #branding {
+        position:relative;
+        padding:0;
+    }
 }
 
 @font-face {

@@ -18,9 +18,6 @@
             </a>
             <img src="<?php echo get_template_directory_uri(); ?>/images/kids.png" alt="Children smiling" class="hero-img" />
             <nav id="menu" role="navigation">
-                <div id="search">
-                <?php get_search_form(); ?>
-                </div>
                 <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
             </nav>
         </header>
