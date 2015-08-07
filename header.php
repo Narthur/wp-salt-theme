@@ -16,7 +16,6 @@
                 </h2>
                 <div id="site-description"><?php bloginfo( 'description' ); ?></div>
             </a>
-            <img src="<?php echo get_template_directory_uri(); ?>/images/kids.png" alt="Children smiling" class="hero-img" />
             <nav id="menu" role="navigation">
                 <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
             </nav>

@@ -1,4 +1,11 @@
 <?php
+
+add_filter('wp_nav_menu_objects', 'ad_filter_menu', 10, 2);
+
+function ad_filter_menu($sorted_menu_objects, $args) {
+    return '';
+}
+
 add_action( 'after_setup_theme', 'blankslate_setup' );
 function blankslate_setup()
 {
@@ -64,3 +71,6 @@ return count( $comments_by_type['comment'] );
 return $count;
 }
 }
+
+// ===============================
+
