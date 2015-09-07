@@ -17,7 +17,7 @@
                 <div id="site-description"><?php bloginfo( 'description' ); ?></div>
             </a>
             <nav id="menu" role="navigation">
-                <?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?>
+                <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'walker' => new Thumbnail_Walker ) ); ?>
             </nav>
         </header>
         <div id="container">

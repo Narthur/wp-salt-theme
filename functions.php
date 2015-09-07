@@ -1,10 +1,78 @@
 <?php
 
-add_filter('wp_nav_menu_objects', 'ad_filter_menu', 10, 2);
+/*
+ * Create HTML list of nav menu items.
+ * Replacement for the native Walker, using the description.
+ *
+ * @see    http://wordpress.stackexchange.com/q/14037/
+ * @author toscho, http://toscho.de
+ */
+class Thumbnail_Walker extends Walker_Nav_Menu
+{
+    /**
+     * Start the element output.
+     *
+     * @param  string $output Passed by reference. Used to append additional content.
+     * @param  object $item   Menu item data object.
+     * @param  int $depth     Depth of menu item. May be used for padding.
+     * @param  array $args    Additional strings.
+     * @return void
+     */
+    function start_el(&$output, $item, $depth, $args)
+    {
+        var_dump($item);
 
-function ad_filter_menu($sorted_menu_objects, $args) {
-    return '';
+        $classes     = empty ( $item->classes ) ? array () : (array) $item->classes;
+
+        $class_names = join(
+            ' '
+            ,   apply_filters(
+                'nav_menu_css_class'
+                ,   array_filter( $classes ), $item
+            )
+        );
+
+        ! empty ( $class_names )
+        and $class_names = ' class="'. esc_attr( $class_names ) . '"';
+
+        $output .= "<li id='menu-item-$item->ID' $class_names>";
+
+        $attributes  = '';
+
+        ! empty( $item->post_title )
+        and $attributes .= ' title="'  . esc_attr( $item->post_title ) .'"';
+        ! empty( $item->guid )
+        and $attributes .= ' href="' . esc_url( site_url('/?p='.$item->ID) ) .'"';
+
+        // insert thumbnail
+        // you may change this
+        $thumbnail = '';
+        if ( has_post_thumbnail( $item->ID ) ) {
+            $thumbnail = get_the_post_thumbnail( $item->ID );
+        }
+
+        $title = apply_filters( 'the_title', $item->title, $item->ID );
+
+        $item_output = $args->before
+            . "<a $attributes>"
+            . $args->link_before
+            . $title
+            . '</a> '
+            . $args->link_after
+            . $thumbnail
+            . $args->after;
+
+        // Since $output is called by reference we don't need to return anything.
+        $output .= apply_filters(
+            'walker_nav_menu_start_el'
+            ,   $item_output
+            ,   $item
+            ,   $depth
+            ,   $args
+        );
+    }
 }
+
 
 add_action( 'after_setup_theme', 'blankslate_setup' );
 function blankslate_setup()
