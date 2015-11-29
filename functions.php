@@ -20,8 +20,6 @@ class Thumbnail_Walker extends Walker_Nav_Menu
      */
     function start_el(&$output, $item, $depth, $args)
     {
-        var_dump($item);
-
         $classes     = empty ( $item->classes ) ? array () : (array) $item->classes;
 
         $class_names = join(
@@ -49,17 +47,19 @@ class Thumbnail_Walker extends Walker_Nav_Menu
         $thumbnail = '';
         if ( has_post_thumbnail( $item->ID ) ) {
             $thumbnail = get_the_post_thumbnail( $item->ID );
+            $post_thumbnail_id = get_post_thumbnail_id( $item->ID );
+            $thumbnailUrl = wp_get_attachment_thumb_url( $post_thumbnail_id );
         }
 
-        $title = apply_filters( 'the_title', $item->title, $item->ID );
+        $title = apply_filters( 'the_title', $item->post_title, $item->ID );
 
         $item_output = $args->before
-            . "<a $attributes>"
+            . "<a $attributes style='background-image:url(\"$thumbnailUrl\")'>"
             . $args->link_before
-            . $title
-            . '</a> '
-            . $args->link_after
+            . "<span>$title</span>"
             . $thumbnail
+            . $args->link_after
+            . '</a> '
             . $args->after;
 
         // Since $output is called by reference we don't need to return anything.
