@@ -13,4 +13,9 @@
     <?php endwhile; endif; ?>
     <?php get_template_part( 'nav', 'below' ); ?>
 </section>
+<<<<<<< HEAD
 <?php get_footer(); ?>
+=======
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>
+>>>>>>> parent of 51ee4a2... Removed sidebar, + misc changes

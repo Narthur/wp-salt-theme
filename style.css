@@ -14,7 +14,6 @@ body {
     font-size:12px;
     margin:0;
     font-family:sans-serif;
-    line-height:20px;
 }
 
 h1,h2,h3 {
@@ -66,7 +65,6 @@ a:hover {
     color:transparent;
     background-image:url('images/SALT%20Ministries%20logo.png');
     background-repeat:no-repeat;
-    background-position: 50%, 50%;
     width:182px;
     height:169px;
     margin:0 auto;
@@ -85,11 +83,12 @@ nav {
 }
 
 #header .menu li a {
+    padding:10px;
     display:block;
     text-decoration: none;
     color:white;
-    width:120px;
-    height:120px;
+    width:100px;
+    height:100px;
     border:10px solid white;
     margin:10px;
     box-shadow: 0 0 10px rgba(0,0,0,.5);
@@ -112,11 +111,7 @@ nav {
 
 #header .menu li a span {
     position: absolute;
-    bottom: 0;
-    padding:10px;
-    background-color:rgba(0,0,0,.2);
-    width:100px;
-    overflow:hidden;
+    bottom: 10px;
 }
 
 #header .menu img {
@@ -128,6 +123,7 @@ nav {
 }
 
 #content {
+<<<<<<< HEAD
     padding:0 2%;
 }
 
@@ -162,6 +158,12 @@ nav {
 
 #comment {
     width:100%;
+=======
+    clear:left;
+    width:62%;
+    float:left;
+    padding:2%;
+>>>>>>> parent of 51ee4a2... Removed sidebar, + misc changes
 }
 
 #sidebar {
@@ -211,6 +213,7 @@ footer .menu li {
     float:right;
 }
 
+<<<<<<< HEAD
 #un-button {
     display:none;
 }
@@ -219,6 +222,11 @@ footer .menu li {
     #content article {
         width:auto;
         float:none;
+=======
+@media all and (max-width: 750px) {
+    #content, #sidebar {
+        width:100%;
+>>>>>>> parent of 51ee4a2... Removed sidebar, + misc changes
     }
 
     #branding {
