@@ -124,6 +124,7 @@ nav {
 
 #content {
 <<<<<<< HEAD
+<<<<<<< HEAD
     padding:0 2%;
 }
 
@@ -164,6 +165,12 @@ nav {
     float:left;
     padding:2%;
 >>>>>>> parent of 51ee4a2... Removed sidebar, + misc changes
+=======
+    clear:left;
+    width:62%;
+    float:left;
+    padding:2%;
+>>>>>>> master
 }
 
 #sidebar {
@@ -214,6 +221,7 @@ footer .menu li {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 #un-button {
     display:none;
 }
@@ -229,6 +237,15 @@ footer .menu li {
 >>>>>>> parent of 51ee4a2... Removed sidebar, + misc changes
     }
 
+=======
+@media all and (max-width: 750px) {
+    #content, #sidebar {
+        width:100%;
+    }
+}
+
+@media all and (max-width: 500px) {
+>>>>>>> master
     #branding {
         position:relative;
         padding:0;

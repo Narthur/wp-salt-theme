@@ -73,6 +73,7 @@ class Thumbnail_Walker extends Walker_Nav_Menu
     }
 }
 
+
 add_action( 'after_setup_theme', 'blankslate_setup' );
 function blankslate_setup()
 {
@@ -141,7 +142,3 @@ return $count;
 
 // ===============================
 
-function custom_excerpt_length( $length ) {
-    return 20;
-}
-add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
