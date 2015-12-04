@@ -14,6 +14,7 @@ body {
     font-size:12px;
     margin:0;
     font-family:sans-serif;
+    line-height:20px;
 }
 
 h1,h2,h3 {
@@ -123,13 +124,13 @@ nav {
 }
 
 #content {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    padding:0 2%;
+    padding:0 4% 0 0;
+    width:58%;
+    float:right;
 }
 
-#content .entry-title {
-    margin:5px 0 20px 0;
+#content h3 {
+    padding:0 3%;
 }
 
 .post-edit-link {
@@ -144,40 +145,57 @@ nav {
 
 #content article {
     float:left;
-    width:30%;
-    padding:1%;
+    width:27%;
+    padding:3%;
 }
 
-#content article:nth-child(3n+1){
+#content article:nth-child(3n+2){
     clear:left;
+}
+
+#content article .date {
+    display:block;
+    border-bottom:1px solid gray;
+}
+
+#content article .content {
+    display: block;
 }
 
 #nav-below {
     clear:both;
-    padding:1%;
+    font-weight:normal;
+    overflow:hidden;
 }
 
-#comment {
-    width:100%;
-=======
-    clear:left;
-    width:62%;
+#nav-below div {
+    width:50%;
+}
+
+#nav-below a {
+    color:gray;
+    padding: 0 5px;
+}
+
+.nav-previous {
     float:left;
-    padding:2%;
->>>>>>> parent of 51ee4a2... Removed sidebar, + misc changes
-=======
-    clear:left;
-    width:62%;
-    float:left;
-    padding:2%;
->>>>>>> master
+    text-align:right;
+}
+
+.nav-next {
+    float:right;
+    text-align:left;
 }
 
 #sidebar {
-    width:27%;
-    float:right;
-    background-color:gainsboro;
-    padding:2%
+    width:30%;
+    float:left;
+    padding:0 0 0 4%;
+}
+
+.widget-title {
+    margin-bottom: 25px;
+    padding-bottom: 6%;
 }
 
 #sidebar ul {
@@ -197,6 +215,7 @@ nav {
     padding:2%;
     color:darkgray;
     overflow:hidden;
+    margin-top:4%;
 }
 
 #footer>* {
@@ -220,34 +239,29 @@ footer .menu li {
     float:right;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 #un-button {
     display:none;
 }
 
-@media all and (max-width: 500px) {
-    #content article {
-        width:auto;
-        float:none;
-=======
 @media all and (max-width: 750px) {
     #content, #sidebar {
-        width:100%;
->>>>>>> parent of 51ee4a2... Removed sidebar, + misc changes
+        width:94%;
     }
-
-=======
-@media all and (max-width: 750px) {
-    #content, #sidebar {
-        width:100%;
+    
+    .widget-title {
+        padding-bottom: auto;
+        margin-bottom: auto;
     }
 }
 
 @media all and (max-width: 500px) {
->>>>>>> master
     #branding {
         position:relative;
         padding:0;
+    }
+
+    #content article {
+        width: auto;
+        float: none;
     }
 }
