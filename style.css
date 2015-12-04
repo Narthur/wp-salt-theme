@@ -128,7 +128,15 @@ nav {
 }
 
 #content {
+    clear:left;
+    width:62%;
+    float:left;
     padding:0 2%;
+}
+
+#content img {
+    max-width:100%;
+    height:auto;
 }
 
 #content .entry-title {
@@ -138,26 +146,6 @@ nav {
 .post-edit-link {
     margin-bottom:20px;
     display:block;
-}
-
-#content img {
-    max-width:100%;
-    height:auto;
-}
-
-#content article {
-    float:left;
-    width:30%;
-    padding:1%;
-}
-
-#content article:nth-child(3n+1){
-    clear:left;
-}
-
-#nav-below {
-    clear:both;
-    padding:1%;
 }
 
 #comment {
@@ -215,12 +203,13 @@ footer .menu li {
     display:none;
 }
 
-@media all and (max-width: 500px) {
-    #content article {
+@media all and (max-width: 750px) {
+    #content, #sidebar {
         width:auto;
-        float:none;
     }
+}
 
+@media all and (max-width: 500px) {
     #branding {
         position:relative;
         padding:0;
