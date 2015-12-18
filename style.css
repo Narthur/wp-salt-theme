@@ -155,11 +155,13 @@ nav {
 
 #content article .date {
     display:block;
-    border-bottom:1px solid gray;
+    padding-bottom:5px;
+    border-bottom:1px solid lightgray;
 }
 
 #content article .content {
     display: block;
+    padding-top:5px;
 }
 
 #nav-below {
@@ -194,7 +196,7 @@ nav {
 }
 
 .widget-title {
-    margin-bottom: 25px;
+    margin-bottom: 22px;
     padding-bottom: 6%;
 }
 
