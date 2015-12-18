@@ -119,7 +119,8 @@ a:hover {
 }
 
 #header .primary-nav {
-    margin-bottom:-140px;
+	display:table;
+	margin:0 auto -140px auto;
 }
 
 #header .primary-nav ul {
@@ -128,9 +129,10 @@ a:hover {
 }
 
 #header .primary-nav li {
-	display:inline-block;
+	float:left;
 	margin-right:1px;
 	position:relative;
+	list-style:none;
 }
 
 #header .primary-nav li a {
@@ -144,7 +146,7 @@ a:hover {
     margin:10px;
     box-shadow: 0 0 10px rgba(0,0,0,.5);
     text-shadow: 0 0 3px rgba(0,0,0,.5);
-    font-size:20px;
+    font-size:18px;
     position:relative;
     text-align: left;
     background-color: #333;
@@ -157,20 +159,20 @@ a:hover {
 }
 
 #header .primary-nav li a:hover {
-    top:-20px;
+    top:-15px;
 }
 
 #header .primary-nav li a span {
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
+	left:0;
+	padding:8px;
+	width:104px;
+	background-color:rgba(0,0,0,.3);
 }
 
 #header .primary-nav img {
     display:none;
-}
-
-#header .current_page_item, #header .primary-nav .current_page_item a {
-    background-color:darkblue;
 }
 
 #content {

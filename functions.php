@@ -119,7 +119,7 @@ class SecondaryNavWalker extends Walker_Nav_Menu
         $title = apply_filters( 'the_title', $item->post_title, $item->ID );
 
         $item_output = $args->before
-            . "<a $attributes style='background-image:url(\"$thumbnailUrl\")'>"
+            . "<a $attributes>"
             . $args->link_before
             . "$title"
             . $args->link_after
@@ -147,7 +147,7 @@ add_theme_support( 'post-thumbnails' );
 global $content_width;
 if ( ! isset( $content_width ) ) $content_width = 640;
 register_nav_menus(
-array( 'main-menu' => __( 'Main Menu', 'blankslate' ) )
+array( 'main-menu' => 'Main Menu', 'secondary-nav' => 'Secondary Nav' )
 );
 }
 add_action( 'wp_enqueue_scripts', 'blankslate_load_scripts' );
@@ -258,3 +258,10 @@ function saveNavPlacementMeta( $post_id ) {
     update_post_meta( $post_id, 'saltIsInMainNav', $my_data );
 }
 add_action( 'save_post', 'saveNavPlacementMeta' );
+
+function my_page_menu_args( $args ) {
+    if($args['theme_location'] === 'secondary-menu')
+        $args['show_home'] = true;
+    return $args;
+}
+add_filter( 'wp_page_menu_args', 'my_page_menu_args' );
