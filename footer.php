@@ -15,7 +15,7 @@
         <address>E-mail: <a href="mailto:salt@camshin.com.kh">salt@camshin.com.kh</a></address>
     </div>
 </footer>
-</div>
+</div> <!-- /wrapper -->
 <?php wp_footer(); ?>
 </body>
 </html>

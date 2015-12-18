@@ -10,6 +10,10 @@ License URI: https://www.gnu.org/licenses/gpl.html
 Salt Ministries theme is distributed under the terms of the GNU GPL
 */
 
+html, body {
+	height:100%;
+}
+
 body {
     font-size:12px;
     margin:0;
@@ -38,6 +42,18 @@ h3 {
 
 a:hover {
     text-decoration:none;
+}
+
+#wrapper {
+	min-height:100%;
+	position:relative;
+	padding-bottom:200px;
+	box-sizing: border-box;
+}
+
+#wrapper:after {
+	content:"";
+	display:block;
 }
 
 .menu ul {
@@ -124,6 +140,10 @@ nav {
 }
 
 #content {
+	padding:0 4%;
+}
+
+.home #content {
     padding:0 4% 0 0;
     width:58%;
     float:right;
@@ -143,23 +163,23 @@ nav {
     height:auto;
 }
 
-#content article {
+.home #content article {
     float:left;
     width:27%;
     padding:3%;
 }
 
-#content article:nth-child(3n+2){
+.home #content article:nth-child(3n+2){
     clear:left;
 }
 
-#content article .date {
+.home #content article .date {
     display:block;
     padding-bottom:5px;
     border-bottom:1px solid lightgray;
 }
 
-#content article .content {
+.home #content article .content {
     display: block;
     padding-top:5px;
 }
@@ -214,10 +234,12 @@ nav {
 
 #footer {
     background-color: #333;
-    padding:2%;
+    padding:4%;
     color:darkgray;
     overflow:hidden;
-    margin-top:4%;
+	position:absolute;
+	bottom:0;
+	margin-top:4%;
 }
 
 #footer>* {
@@ -246,7 +268,7 @@ footer .menu li {
 }
 
 @media all and (max-width: 750px) {
-    #content, #sidebar {
+    .home #content, #sidebar {
         width:94%;
     }
     

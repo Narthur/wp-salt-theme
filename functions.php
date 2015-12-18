@@ -142,3 +142,9 @@ return $count;
 
 // ===============================
 
+function registerScripts() {
+    wp_register_script('saltThemeJs', get_bloginfo('template_directory') . '/javascript.js', array('jquery'));
+    wp_enqueue_script('saltThemeJs');
+}
+
+add_action( 'wp_enqueue_scripts', 'registerScripts' );
