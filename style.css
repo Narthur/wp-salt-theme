@@ -56,50 +56,84 @@ a:hover {
 	display:block;
 }
 
-.menu ul {
-    margin:0;
-    padding:0;
-}
-
-.menu li {
-    display:inline-block;
-    margin-right:1px;
-    position:relative;
-}
-
 #header {
     position:relative;
     padding-bottom: 30px;
     background-color: #333;
     text-align: center;
     border-bottom:140px solid white;
+	padding-top:20px;
 }
 
 #branding {
-    padding:20px;
+    padding:0 20px;
     text-decoration: none;
     display:block;
     color:transparent;
     background-image:url('images/SALT%20Ministries%20logo.png');
     background-repeat:no-repeat;
+	background-position: center center;
     width:182px;
-    height:169px;
-    margin:0 auto;
+    height:150px;
+    margin:0 auto 20px auto;
 }
 
 #branding:hover h2 {
     text-decoration: underline;
 }
 
-nav {
+#header nav {
     font-weight: bold;
 }
 
-#header .menu {
+#header .secondary-nav ul {
+	color:white;
+	padding:0 0 20px 0;
+	margin:0
+}
+
+#header .secondary-nav li {
+	display:inline-block;
+}
+
+#header .secondary-nav li:after {
+	content: " \2022";
+	font-size:20px;
+	position:relative;
+	top:3px;
+	right:1px;
+}
+
+#header .secondary-nav li:last-child:after {
+	content: none;
+}
+
+#header .secondary-nav li a {
+	color:white;
+	text-decoration: none;
+	padding:5px;
+}
+
+#header .secondary-nav li a:hover {
+	text-decoration: underline;
+}
+
+#header .primary-nav {
     margin-bottom:-140px;
 }
 
-#header .menu li a {
+#header .primary-nav ul {
+	margin:0;
+	padding:0;
+}
+
+#header .primary-nav li {
+	display:inline-block;
+	margin-right:1px;
+	position:relative;
+}
+
+#header .primary-nav li a {
     padding:10px;
     display:block;
     text-decoration: none;
@@ -122,20 +156,20 @@ nav {
     transition: top 0.5s ease;
 }
 
-#header .menu li a:hover {
+#header .primary-nav li a:hover {
     top:-20px;
 }
 
-#header .menu li a span {
+#header .primary-nav li a span {
     position: absolute;
     bottom: 10px;
 }
 
-#header .menu img {
+#header .primary-nav img {
     display:none;
 }
 
-#header .current_page_item, #header .menu .current_page_item a {
+#header .current_page_item, #header .primary-nav .current_page_item a {
     background-color:darkblue;
 }
 
@@ -248,12 +282,16 @@ nav {
     width:33%;
 }
 
-footer li a {
+footer a {
     color:darkgray;
 }
 
 footer .menu {
     margin-bottom: 20px;
+}
+
+footer .menu ul {
+	margin:0;
 }
 
 footer .menu li {

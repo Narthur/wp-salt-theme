@@ -7,7 +7,7 @@
         the prison, and them that sit in darkness out of the prison house" (Isaiah 42:6,7).
     </div>
     <nav class="footer-nav"><?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?></nav>
-    <div class="contact">
+    <div class="contact" id="contact">
         <?php echo sprintf( '%1$s %2$s %3$s. All Rights Reserved.', '&copy;', date( 'Y' ), esc_html( get_bloginfo( 'name' ) ) ); ?>
         <address>
             SALT Ministries, Wat Preah Yesu<br />

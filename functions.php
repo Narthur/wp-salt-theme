@@ -20,6 +20,10 @@ class Thumbnail_Walker extends Walker_Nav_Menu
      */
     function start_el(&$output, $item, $depth, $args)
     {
+        if (! get_post_meta( $item->ID, 'saltIsInMainNav', true )) {
+            return;
+        }
+
         $classes     = empty ( $item->classes ) ? array () : (array) $item->classes;
 
         $class_names = join(
@@ -58,6 +62,66 @@ class Thumbnail_Walker extends Walker_Nav_Menu
             . $args->link_before
             . "<span>$title</span>"
             . $thumbnail
+            . $args->link_after
+            . '</a> '
+            . $args->after;
+
+        // Since $output is called by reference we don't need to return anything.
+        $output .= apply_filters(
+            'walker_nav_menu_start_el'
+            ,   $item_output
+            ,   $item
+            ,   $depth
+            ,   $args
+        );
+    }
+}
+
+class SecondaryNavWalker extends Walker_Nav_Menu
+{
+    /**
+     * Start the element output.
+     *
+     * @param  string $output Passed by reference. Used to append additional content.
+     * @param  object $item   Menu item data object.
+     * @param  int $depth     Depth of menu item. May be used for padding.
+     * @param  array $args    Additional strings.
+     * @return void
+     */
+    function start_el(&$output, $item, $depth, $args)
+    {
+        if (get_post_meta( $item->ID, 'saltIsInMainNav', true )) {
+            return;
+        }
+
+        $classes     = empty ( $item->classes ) ? array () : (array) $item->classes;
+
+        $class_names = join(
+            ' '
+            ,   apply_filters(
+                'nav_menu_css_class'
+                ,   array_filter( $classes ), $item
+            )
+        );
+
+        ! empty ( $class_names )
+        and $class_names = ' class="'. esc_attr( $class_names ) . '"';
+
+        $output .= "<li id='menu-item-$item->ID' $class_names>";
+
+        $attributes  = '';
+
+        ! empty( $item->post_title )
+        and $attributes .= ' title="'  . esc_attr( $item->post_title ) .'"';
+        ! empty( $item->guid )
+        and $attributes .= ' href="' . esc_url( site_url('/?p='.$item->ID) ) .'"';
+
+        $title = apply_filters( 'the_title', $item->post_title, $item->ID );
+
+        $item_output = $args->before
+            . "<a $attributes style='background-image:url(\"$thumbnailUrl\")'>"
+            . $args->link_before
+            . "$title"
             . $args->link_after
             . '</a> '
             . $args->after;
@@ -148,3 +212,49 @@ function registerScripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'registerScripts' );
+
+function navMetaBox($post) {
+
+    wp_nonce_field( 'salt_save_meta_box_data', 'salt_meta_box_nonce' );
+
+    $value = get_post_meta( $post->ID, 'saltIsInMainNav', true );
+
+    if ($value) {
+        echo '<input type="checkbox" id="saltNavPlacement" name="navPlacementField" value="mainNav" checked />';
+    } else {
+        echo '<input type="checkbox" id="saltNavPlacement" name="navPlacementField" value="mainNav" />';
+    }
+
+    echo '<label for="saltNavPlacement">Place in main navigation</label> ';
+}
+
+function registerMetaBox() {
+    add_meta_box( 'saltNav', 'Navigation Placement', 'navMetaBox', 'page', 'side' );
+}
+
+add_action( 'add_meta_boxes', 'registerMetaBox' );
+
+function saveNavPlacementMeta( $post_id ) {
+    if ( ! isset( $_POST['salt_meta_box_nonce'] ) ) {
+        return;
+    }
+
+    if ( ! wp_verify_nonce( $_POST['salt_meta_box_nonce'], 'salt_save_meta_box_data' ) ) {
+        return;
+    }
+
+    if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
+        if ( ! current_user_can( 'edit_page', $post_id ) ) {
+            return;
+        }
+    } else {
+        if ( ! current_user_can( 'edit_post', $post_id ) ) {
+            return;
+        }
+    }
+
+    $my_data = sanitize_text_field( $_POST['navPlacementField'] );
+
+    update_post_meta( $post_id, 'saltIsInMainNav', $my_data );
+}
+add_action( 'save_post', 'saveNavPlacementMeta' );

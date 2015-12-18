@@ -12,13 +12,17 @@
 <body <?php body_class(); ?>>
     <div id="wrapper" class="hfeed">
         <header id="header" role="banner">
-            <a id="branding" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php esc_attr_e( get_bloginfo( 'name' ), 'blankslate' ); ?>" rel="home">
+            <?php $homeUrl = esc_url( home_url( '/' )) ?>
+            <a id="branding" href="<?php echo $homeUrl ?>" title="<?php esc_attr_e( get_bloginfo( 'name' ), 'blankslate' ); ?>" rel="home">
                 <h2 id="site-title">
                     <?php echo esc_html( get_bloginfo( 'name' ) ); ?>
                 </h2>
                 <div id="site-description"><?php bloginfo( 'description' ); ?></div>
             </a>
-            <nav id="menu" role="navigation">
+            <nav class="secondary-nav" role="navigation">
+                <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'walker' => new SecondaryNavWalker ) ); ?>
+            </nav>
+            <nav class="primary-nav" id="menu" role="navigation">
                 <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'walker' => new Thumbnail_Walker ) ); ?>
             </nav>
         </header>
