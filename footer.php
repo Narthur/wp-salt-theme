@@ -2,7 +2,9 @@
 </div>
 <footer id="footer" role="contentinfo">
     <div class="about">
-        Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+        "I the Lord have called thee in righteousness, and will hold thine hand, and will keep thee, and give thee for
+        a covenant of the people, for a light of the Gentiles; To open the blind eyes, to bring out the prisoners from
+        the prison, and them that sit in darkness out of the prison house" (Isaiah 42:6,7).
     </div>
     <nav class="footer-nav"><?php wp_nav_menu( array( 'theme_location' => 'main-menu' ) ); ?></nav>
     <div class="contact">
