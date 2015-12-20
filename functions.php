@@ -7,19 +7,12 @@
  * @see    http://wordpress.stackexchange.com/q/14037/
  * @author toscho, http://toscho.de
  */
+
 class Thumbnail_Walker extends Walker_Nav_Menu
 {
-    /**
-     * Start the element output.
-     *
-     * @param  string $output Passed by reference. Used to append additional content.
-     * @param  object $item   Menu item data object.
-     * @param  int $depth     Depth of menu item. May be used for padding.
-     * @param  array $args    Additional strings.
-     * @return void
-     */
     function start_el(&$output, $item, $depth, $args)
     {
+
         if (! get_post_meta( $item->ID, 'saltIsInMainNav', true )) {
             return;
         }
@@ -79,15 +72,6 @@ class Thumbnail_Walker extends Walker_Nav_Menu
 
 class SecondaryNavWalker extends Walker_Nav_Menu
 {
-    /**
-     * Start the element output.
-     *
-     * @param  string $output Passed by reference. Used to append additional content.
-     * @param  object $item   Menu item data object.
-     * @param  int $depth     Depth of menu item. May be used for padding.
-     * @param  array $args    Additional strings.
-     * @return void
-     */
     function start_el(&$output, $item, $depth, $args)
     {
         if (get_post_meta( $item->ID, 'saltIsInMainNav', true )) {
