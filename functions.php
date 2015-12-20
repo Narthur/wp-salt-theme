@@ -249,3 +249,9 @@ function my_page_menu_args( $args ) {
     return $args;
 }
 add_filter( 'wp_page_menu_args', 'my_page_menu_args' );
+
+add_action( 'init', 'removeEditorFromPosts' );
+function removeEditorFromPosts() {
+    remove_post_type_support( 'post', 'excerpt' );
+    remove_post_type_support( 'post', 'editor' );
+}
