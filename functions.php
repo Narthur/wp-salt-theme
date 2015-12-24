@@ -13,7 +13,7 @@ class Thumbnail_Walker extends Walker_Nav_Menu
     function start_el(&$output, $item, $depth, $args)
     {
 
-        if (! get_post_meta( $item->ID, 'saltIsInMainNav', true )) {
+        if (! get_post_meta( $item->ID, 'saltIsInMainNav', true ) || $depth > $args['depth']) {
             return;
         }
 
@@ -74,7 +74,15 @@ class SecondaryNavWalker extends Walker_Nav_Menu
 {
     function start_el(&$output, $item, $depth, $args)
     {
-        if (get_post_meta( $item->ID, 'saltIsInMainNav', true )) {
+        //var_dump($item);
+        //var_dump('Args');
+        //var_dump($args);
+
+        var_dump('depth comp');
+        var_dump($depth);
+        var_dump($args['depth']);
+
+        if (get_post_meta( $item->ID, 'saltIsInMainNav', true ) || $depth > $args['depth']) {
             return;
         }
 

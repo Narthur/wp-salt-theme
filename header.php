@@ -20,7 +20,11 @@
                 <div id="site-description"><?php bloginfo( 'description' ); ?></div>
             </a>
             <nav class="secondary-nav" role="navigation">
-                <?php wp_nav_menu( array( 'theme_location' => 'secondary-menu', 'walker' => new SecondaryNavWalker ) ); ?>
+                <?php wp_nav_menu( array(
+                    'theme_location' => 'secondary-menu',
+                    'depth' => 1,
+                    'walker' => new SecondaryNavWalker
+                ) ); ?>
             </nav>
             <nav class="primary-nav" id="menu" role="navigation">
                 <?php wp_nav_menu( array( 'theme_location' => 'main-menu', 'walker' => new Thumbnail_Walker ) ); ?>

@@ -13,7 +13,8 @@
     <?php wp_nav_menu(array(
         'theme_location' => 'main-menu',
         'container' => false,
-        'menu_class' => 'footer-nav'
+        'menu_class' => 'footer-nav',
+        'depth' => 1
     )); ?>
     <p class="about">
         "I the Lord have called thee in righteousness, and will hold thine hand, and will keep thee, and give thee for
