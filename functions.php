@@ -1,134 +1,5 @@
 <?php
 
-/*
- * Create HTML list of nav menu items.
- * Replacement for the native Walker, using the description.
- *
- * @see    http://wordpress.stackexchange.com/q/14037/
- * @author toscho, http://toscho.de
- */
-
-class Thumbnail_Walker extends Walker_Nav_Menu
-{
-    function start_el(&$output, $item, $depth, $args)
-    {
-
-        if (! get_post_meta( $item->ID, 'saltIsInMainNav', true ) || $depth > $args['depth']) {
-            return;
-        }
-
-        $classes     = empty ( $item->classes ) ? array () : (array) $item->classes;
-
-        $class_names = join(
-            ' '
-            ,   apply_filters(
-                'nav_menu_css_class'
-                ,   array_filter( $classes ), $item
-            )
-        );
-
-        ! empty ( $class_names )
-        and $class_names = ' class="'. esc_attr( $class_names ) . '"';
-
-        $output .= "<li id='menu-item-$item->ID' $class_names>";
-
-        $attributes  = '';
-
-        ! empty( $item->post_title )
-        and $attributes .= ' title="'  . esc_attr( $item->post_title ) .'"';
-        ! empty( $item->guid )
-        and $attributes .= ' href="' . esc_url( site_url('/?p='.$item->ID) ) .'"';
-
-        // insert thumbnail
-        // you may change this
-        $thumbnail = '';
-        if ( has_post_thumbnail( $item->ID ) ) {
-            $thumbnail = get_the_post_thumbnail( $item->ID );
-            $post_thumbnail_id = get_post_thumbnail_id( $item->ID );
-            $thumbnailUrl = wp_get_attachment_thumb_url( $post_thumbnail_id );
-        }
-
-        $title = apply_filters( 'the_title', $item->post_title, $item->ID );
-
-        $item_output = $args->before
-            . "<a $attributes style='background-image:url(\"$thumbnailUrl\")'>"
-            . $args->link_before
-            . "<span>$title</span>"
-            . $thumbnail
-            . $args->link_after
-            . '</a> '
-            . $args->after;
-
-        // Since $output is called by reference we don't need to return anything.
-        $output .= apply_filters(
-            'walker_nav_menu_start_el'
-            ,   $item_output
-            ,   $item
-            ,   $depth
-            ,   $args
-        );
-    }
-}
-
-class SecondaryNavWalker extends Walker_Nav_Menu
-{
-    function start_el(&$output, $item, $depth, $args)
-    {
-        //var_dump($item);
-        //var_dump('Args');
-        //var_dump($args);
-
-        var_dump('depth comp');
-        var_dump($depth);
-        var_dump($args['depth']);
-
-        if (get_post_meta( $item->ID, 'saltIsInMainNav', true ) || $depth > $args['depth']) {
-            return;
-        }
-
-        $classes     = empty ( $item->classes ) ? array () : (array) $item->classes;
-
-        $class_names = join(
-            ' '
-            ,   apply_filters(
-                'nav_menu_css_class'
-                ,   array_filter( $classes ), $item
-            )
-        );
-
-        ! empty ( $class_names )
-        and $class_names = ' class="'. esc_attr( $class_names ) . '"';
-
-        $output .= "<li id='menu-item-$item->ID' $class_names>";
-
-        $attributes  = '';
-
-        ! empty( $item->post_title )
-        and $attributes .= ' title="'  . esc_attr( $item->post_title ) .'"';
-        ! empty( $item->guid )
-        and $attributes .= ' href="' . esc_url( site_url('/?p='.$item->ID) ) .'"';
-
-        $title = apply_filters( 'the_title', $item->post_title, $item->ID );
-
-        $item_output = $args->before
-            . "<a $attributes>"
-            . $args->link_before
-            . "$title"
-            . $args->link_after
-            . '</a> '
-            . $args->after;
-
-        // Since $output is called by reference we don't need to return anything.
-        $output .= apply_filters(
-            'walker_nav_menu_start_el'
-            ,   $item_output
-            ,   $item
-            ,   $depth
-            ,   $args
-        );
-    }
-}
-
 
 add_action( 'after_setup_theme', 'blankslate_setup' );
 function blankslate_setup()
@@ -263,3 +134,167 @@ function removeEditorFromPosts() {
     remove_post_type_support( 'post', 'excerpt' );
     remove_post_type_support( 'post', 'editor' );
 }
+
+/*
+ * Create HTML list of nav menu items.
+ * Replacement for the native Walker, using the description.
+ *
+ * @see    http://wordpress.stackexchange.com/q/14037/
+ * @author toscho, http://toscho.de
+ */
+
+class Thumbnail_Walker extends Walker_Nav_Menu
+{
+    function start_el(&$output, $item, $depth, $args)
+    {
+
+        if (! get_post_meta( $item->ID, 'saltIsInMainNav', true ) || $depth > $args['depth']) {
+            return;
+        }
+
+        $classes     = empty ( $item->classes ) ? array () : (array) $item->classes;
+
+        $class_names = join(
+            ' '
+            ,   apply_filters(
+                'nav_menu_css_class'
+                ,   array_filter( $classes ), $item
+            )
+        );
+
+        ! empty ( $class_names )
+        and $class_names = ' class="'. esc_attr( $class_names ) . '"';
+
+        $output .= "<li id='menu-item-$item->ID' $class_names>";
+
+        $attributes  = '';
+
+        ! empty( $item->post_title )
+        and $attributes .= ' title="'  . esc_attr( $item->post_title ) .'"';
+        ! empty( $item->guid )
+        and $attributes .= ' href="' . esc_url( site_url('/?p='.$item->ID) ) .'"';
+
+        // insert thumbnail
+        // you may change this
+        $thumbnail = '';
+        if ( has_post_thumbnail( $item->ID ) ) {
+            $thumbnail = get_the_post_thumbnail( $item->ID );
+            $post_thumbnail_id = get_post_thumbnail_id( $item->ID );
+            $thumbnailUrl = wp_get_attachment_thumb_url( $post_thumbnail_id );
+        }
+
+        $title = apply_filters( 'the_title', $item->post_title, $item->ID );
+
+        $item_output = $args->before
+            . "<a $attributes style='background-image:url(\"$thumbnailUrl\")'>"
+            . $args->link_before
+            . "<span>$title</span>"
+            . $thumbnail
+            . $args->link_after
+            . '</a> '
+            . $args->after;
+
+        // Since $output is called by reference we don't need to return anything.
+        $output .= apply_filters(
+            'walker_nav_menu_start_el'
+            ,   $item_output
+            ,   $item
+            ,   $depth
+            ,   $args
+        );
+    }
+}
+
+class SecondaryNavWalker extends Walker_Nav_Menu {
+    function start_el( &$output, $item, $depth, $args ) {
+        $indent         = ( $depth > 0 ? str_repeat( "\t", $depth ) : '' );
+
+        // Passed Classes
+        $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+        $class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
+
+        // Here's Our Depth
+        $class_names .= " {$depth}";
+
+        // build html
+        $output .= $indent . '<li id="nav-menu-item-'. $item->ID . '" class="' . $class_names . '">';
+
+        // link attributes
+        $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+        $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+        $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+        $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+        $attributes .= ' class="menu-link ' . ( $depth > 0 ? 'sub-menu-link' : 'main-menu-link' ) . '"';
+
+        $item_output = sprintf( '%1$s<a%2$s>%3$s%4$s%5$s</a>%6$s',
+            $args->before,
+            $attributes,
+            $args->link_before,
+            apply_filters( 'the_title', $item->title, $item->ID ),
+            $args->link_after,
+            $args->after
+        );
+
+        // build html
+        $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+    }
+}
+
+/*class SecondaryNavWalker extends Walker_Nav_Menu
+{
+    function start_el(&$output, $item, $depth, $args)
+    {
+        //var_dump($item);
+        //var_dump('Args');
+        //var_dump($args);
+
+        var_dump('depth comp');
+        var_dump($depth);
+        var_dump($args['depth']);
+
+        if (get_post_meta( $item->ID, 'saltIsInMainNav', true ) || $depth > $args['depth']) {
+            return;
+        }
+
+        $classes     = empty ( $item->classes ) ? array () : (array) $item->classes;
+
+        $class_names = join(
+            ' '
+            ,   apply_filters(
+                'nav_menu_css_class'
+                ,   array_filter( $classes ), $item
+            )
+        );
+
+        ! empty ( $class_names )
+        and $class_names = ' class="'. esc_attr( $class_names ) . '"';
+
+        $output .= "<li id='menu-item-$item->ID' $class_names>";
+
+        $attributes  = '';
+
+        ! empty( $item->post_title )
+        and $attributes .= ' title="'  . esc_attr( $item->post_title ) .'"';
+        ! empty( $item->guid )
+        and $attributes .= ' href="' . esc_url( site_url('/?p='.$item->ID) ) .'"';
+
+        $title = apply_filters( 'the_title', $item->post_title, $item->ID );
+
+        $item_output = $args->before
+            . "<a $attributes>"
+            . $args->link_before
+            . "$title"
+            . $args->link_after
+            . '</a> '
+            . $args->after;
+
+        // Since $output is called by reference we don't need to return anything.
+        $output .= apply_filters(
+            'walker_nav_menu_start_el'
+            ,   $item_output
+            ,   $item
+            ,   $depth
+            ,   $args
+        );
+    }
+}*/
