@@ -298,6 +298,10 @@ a:hover {
     margin:0;
 }
 
+#footer .about {
+    overflow:hidden;
+}
+
 #footer .footer-nav, #footer .contact {
     display:table;
     float:right;
