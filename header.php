@@ -20,10 +20,10 @@
                 <div id="site-description"><?php bloginfo( 'description' ); ?></div>
             </a>
             <nav class="secondary-nav" role="navigation">
-                <?php wp_nav_menu( array(
-                    'theme_location' => 'secondary-menu',
+                <?php wp_page_menu( array(
                     'depth' => 1,
-                    'walker' => new SecondaryNavWalker
+                    'walker' => new SecondaryNavWalker,
+	                'show_home' => true
                 ) ); ?>
             </nav>
             <nav class="primary-nav" id="menu" role="navigation">
