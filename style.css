@@ -72,6 +72,8 @@ a:hover {
 	display:block;
 }
 
+/* === Header === */
+
 #header {
     position:relative;
     padding-bottom: 30px;
@@ -191,6 +193,8 @@ a:hover {
     display:none;
 }
 
+/* === Home === */
+
 #content {
 	padding:0 4%;
 }
@@ -206,7 +210,7 @@ a:hover {
 }
 
 .post-edit-link {
-    margin-bottom:1em;
+    margin-top:1em;
     display:block;
 }
 
@@ -260,6 +264,50 @@ a:hover {
     text-align:left;
 }
 
+/* === page === */
+
+.entry-title {
+    margin:.1em 0;
+}
+
+.entry-title .child {
+    color:grey;
+}
+
+article header ul {
+    padding:0;
+    margin:0;
+}
+
+article header li {
+    display:inline-block;
+}
+
+article header li a {
+    padding:4px 5px 2px 5px;
+}
+
+article header li.current_page_item a, article header li a:hover {
+    background-color:#3D95D2;
+    border-radius:2px;
+    color:white;
+    text-decoration: none;
+}
+
+article header li:after {
+    content: " \2022";
+    font-size:20px;
+    position:relative;
+    top:3px;
+    right:1px;
+}
+
+article header li:last-child:after {
+    content: none;
+}
+
+/* === Sidebar === */
+
 #sidebar {
     width:30%;
     float:left;
@@ -282,6 +330,8 @@ a:hover {
 .clear {
     clear:both;
 }
+
+/* === Footer === */
 
 #footer {
     background-color: #333;
