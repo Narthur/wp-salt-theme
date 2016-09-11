@@ -153,7 +153,7 @@ function removeEditorFromPosts() {
  */
 
 class Thumbnail_Walker extends Walker_Nav_Menu {
-	function start_el( &$output, $item, $depth, $args ) {
+	function start_el( &$output, $item, $depth = 0, $args = Array(), $id = 0 ) {
 
 		if ( ! get_post_meta( $item->ID, 'saltIsInMainNav', true ) || $depth > $args['depth'] ) {
 			return;
